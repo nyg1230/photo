@@ -1,0 +1,3 @@
+# firewall
+firewall-cmd --zone=public --add-port=5432/tcp 
+firewall-cmd --reload
