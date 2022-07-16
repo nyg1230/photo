@@ -7,14 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import prv.toy.photo.common.jwt.JwtUtil;
 import prv.toy.photo.domain.member.model.service.MemberService;
 import prv.toy.photo.domain.member.model.vo.Member;
 
 @RestController
 public class MemberController {
 
-	@Autowired
-	private MemberService<Member> memberService;
+	@Autowired private MemberService<Member> memberService;
+	@Autowired private JwtUtil jwtUtil;
 	
 	@GetMapping("/member/get")
 	public Object findByOid() {
@@ -25,5 +26,13 @@ public class MemberController {
 		System.out.println(memberService.findById(123));
 
 		return test;
+	}
+
+	@GetMapping("/test")
+	public Object test() {
+
+		jwtUtil.create();
+
+		return "";
 	}
 }
