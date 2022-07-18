@@ -6,6 +6,7 @@ public enum JwtOption {
 
 	EXPIRE_TIME(1000 * 60L * 30L),
 	ALGO("HS256"),
+	TOKEN_KEY("photo")
 	;
 	
 	final Object value;
@@ -24,5 +25,9 @@ public enum JwtOption {
 	
 	public SignatureAlgorithm getAlgorithm() {
 		return SignatureAlgorithm.valueOf(this.getValue());
+	}
+
+	public byte[] getBytes() {
+		return this.getValue().getBytes();
 	}
 }

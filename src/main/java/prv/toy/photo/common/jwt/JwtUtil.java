@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.JwtParser;
@@ -46,7 +45,7 @@ public class JwtUtil {
 			.setHeader(header)
 			.setClaims(claims)
 			.setExpiration(expireDate)
-			.signWith(JwtOption.ALGO.getAlgorithm(), "test".getBytes());
+			.signWith(JwtOption.ALGO.getAlgorithm(), JwtOption.TOKEN_KEY.getBytes());
 
 	}
 
@@ -54,7 +53,7 @@ public class JwtUtil {
 		boolean isValidation = false;
 
 		try {
-			JwtParser jwtParser = Jwts.parser().setSigningKey("test".getBytes());
+			JwtParser jwtParser = Jwts.parser().setSigningKey(JwtOption.TOKEN_KEY.getBytes());
 			jwtParser.parseClaimsJws(token);
 
 			isValidation = true;

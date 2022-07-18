@@ -18,5 +18,4 @@ public class Util {
 	public boolean isArray(Object obj) {
 		return obj != null && obj instanceof List;
 	}
-	
 }

@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 
 import prv.toy.photo.domain.base.model.service.BaseServiceImpl;
 import prv.toy.photo.domain.member.model.mapper.MemberMapper;
+import prv.toy.photo.domain.member.model.vo.Member;
 
 @Service
 @Component(value = "Service")
-public class MemberServiceImpl<Member> extends BaseServiceImpl<Member> implements MemberService<Member> {
+public class MemberServiceImpl<VO> extends BaseServiceImpl<VO> implements MemberService<VO> {
 
 	@Override
 	public String getTableName() {
-		return "member";
+		return Member.TABLE_NAME;
 	}
 
 	@Override public List<String> getColumns() {
