@@ -58,8 +58,10 @@ public class BaseObject {
 			String fName = f.getName();
 			
 			try {
-				f.setAccessible(true);
-				f.set(this, map.get(fName));
+				if (!Modifier.isFinal(f.getModifiers())) {
+					f.setAccessible(true);
+					f.set(this, map.get(fName));
+				}
 			} catch (IllegalArgumentException e) {
 			} catch (IllegalAccessException e) {
 			} finally {
