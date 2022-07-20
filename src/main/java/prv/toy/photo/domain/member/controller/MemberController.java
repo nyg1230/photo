@@ -43,6 +43,6 @@ public class MemberController {
 		System.out.println(a.toString());
 		System.out.println(a.getOid());
 
-		return "";
+		return a;
 	}
 }
